@@ -1,0 +1,21 @@
+services:
+  aidisclose:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: aidisclose
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:4197:4197"
+    environment:
+      NODE_ENV: production
+      HOST: 0.0.0.0
+      PORT: 4197
+      AIDISCLOSE_DATA_DIR: /app/data
+      BASE_PATH: ${BASE_PATH:-}
+      APP_ORIGIN: ${APP_ORIGIN:-}
+    volumes:
+      - aidisclose_data:/app/data
+
+volumes:
+  aidisclose_data:

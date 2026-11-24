@@ -1,0 +1,14 @@
+[Unit]
+Description=AIDisclose EU AI Act (Regulation (EU) 2024/1689 Art. 4 & 50) Readiness Studio
+After=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/aidisclose
+EnvironmentFile=/etc/aidisclose/.env
+ExecStart=/usr/bin/node --no-warnings /opt/aidisclose/server/index.mjs
+Restart=on-failure
+RestartSec=3
+
+[Install]
+WantedBy=default.target
